@@ -37,7 +37,7 @@ export function DetectionResult({ result, imageUrl }: DetectionResultProps) {
         ctx.lineWidth = 3;
         ctx.strokeRect(x, y, width, height);
 
-        const label = `${(box.confidence * 100).toFixed(1)}%`;
+        const label = `${box.confidence.toFixed(2)}%`;
         ctx.fillStyle = "hsl(var(--primary))";
         ctx.font = "bold 16px sans-serif";
         const textWidth = ctx.measureText(label).width;
@@ -90,7 +90,7 @@ export function DetectionResult({ result, imageUrl }: DetectionResultProps) {
             </div>
             <div className="rounded-xl bg-muted p-4 text-center">
               <p className="mb-1 text-3xl font-bold text-primary">
-                {result.confidence.toFixed(1)}%
+                {result.confidence.toFixed(2)}%
               </p>
               <p className="text-sm text-muted-foreground">
                 Độ tin cậy cao nhất
@@ -111,7 +111,7 @@ export function DetectionResult({ result, imageUrl }: DetectionResultProps) {
                   >
                     <span>Người #{index + 1}</span>
                     <span className="text-primary">
-                      {(box.confidence * 100).toFixed(1)}%
+                      {box.confidence.toFixed(2)}%
                     </span>
                   </div>
                 ))}
