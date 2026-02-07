@@ -10,7 +10,7 @@ export default function DefaultLayout({
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 flex justify-center items-center">
-        <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+        <div className="py-8 px-4 sm:px-6 lg:px-8">{children}</div>
       </main>
       <Footer />
     </div>
