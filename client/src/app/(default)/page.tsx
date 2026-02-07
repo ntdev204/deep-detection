@@ -31,15 +31,15 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="flex min-h-[calc(100vh-14rem)] flex-col">
-      <section className="flex flex-1 flex-col items-center justify-center py-16">
+    <div className="flex flex-col">
+      <section className="flex flex-1 flex-col items-center justify-center py-6">
         <div className="text-center">
-          <Badge variant="outline" className="mb-6 gap-2">
+          <Badge variant="outline" className="mb-4 gap-2">
             <span className="size-2 animate-pulse rounded-full bg-primary" />
             AI-Powered Detection System
           </Badge>
 
-          <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
             <span className="bg-linear-to-r from-primary to-chart-2 bg-clip-text text-transparent">
               Deep Detection
             </span>
@@ -52,11 +52,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pb-8">
+      <section>
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-10 text-center text-2xl font-semibold">
-            Tính năng
-          </h2>
+          <h2 className="mb-6 text-center text-2xl font-semibold">Tính năng</h2>
 
           <div className="grid gap-6 md:grid-cols-2">
             {features.map((feature) => (

@@ -21,7 +21,7 @@ const upcomingFeatures = [
 
 export default function TrafficDetectionPage() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center">
+    <div className="flex items-center justify-center">
       <Card className="max-w-lg text-center">
         <CardHeader>
           <div className="mx-auto mb-4 flex size-20 items-center justify-center rounded-2xl bg-chart-5">

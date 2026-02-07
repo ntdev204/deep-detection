@@ -37,7 +37,7 @@ export function ImageUploader({ onDetectionResult }: ImageUploaderProps) {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         className={`
-          relative flex min-h-[300px] cursor-pointer flex-col items-center justify-center
+          relative flex min-h-75 cursor-pointer flex-col items-center justify-center
           rounded-xl border-2 border-dashed transition-all duration-300
           ${
             isDragging
@@ -56,7 +56,7 @@ export function ImageUploader({ onDetectionResult }: ImageUploaderProps) {
         />
 
         {previewUrl ? (
-          <div className="relative h-[280px] w-full">
+          <div className="relative h-70 w-full">
             <Image
               src={previewUrl}
               alt="Preview"

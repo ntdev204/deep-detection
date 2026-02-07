@@ -66,10 +66,7 @@ export function DetectionResult({ result, imageUrl }: DetectionResultProps) {
     <div className="space-y-6">
       {imageUrl && (
         <div className="overflow-hidden rounded-xl border border-border">
-          <canvas
-            ref={canvasRef}
-            className="max-h-[500px] w-full object-contain"
-          />
+          <canvas ref={canvasRef} className="max-h-125 w-full object-contain" />
         </div>
       )}
 
