@@ -6,6 +6,8 @@ import { RefreshCw, Upload } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { Input } from "@/components/ui/input";
+
 import { useImageUpload } from "@/hooks/use-image-upload";
 import { DETECTION } from "@/lib/constants";
 import type { DetectionResponse } from "@/types/detection";
@@ -30,15 +32,15 @@ export function ImageUploader({ onDetectionResult }: ImageUploaderProps) {
   } = useImageUpload({ onDetectionResult });
 
   return (
-    <div className="w-full">
+    <div className="flex h-full w-full flex-col">
       <div
         onClick={handleClick}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         className={`
-          relative flex min-h-75 cursor-pointer flex-col items-center justify-center
-          rounded-xl border-2 border-dashed transition-all duration-300
+          relative flex h-70 cursor-pointer flex-col items-center justify-center
+          overflow-hidden rounded-xl border-2 border-dashed transition-all duration-300
           ${
             isDragging
               ? "border-primary bg-primary/10"
@@ -47,7 +49,7 @@ export function ImageUploader({ onDetectionResult }: ImageUploaderProps) {
           ${isLoading ? "pointer-events-none opacity-50" : ""}
         `}
       >
-        <input
+        <Input
           ref={fileInputRef}
           type="file"
           accept={DETECTION.ACCEPTED_IMAGE_TYPES}
@@ -56,12 +58,12 @@ export function ImageUploader({ onDetectionResult }: ImageUploaderProps) {
         />
 
         {previewUrl ? (
-          <div className="relative h-70 w-full">
+          <div className="relative size-full">
             <Image
               src={previewUrl}
               alt="Preview"
               fill
-              className="rounded-lg object-contain"
+              className="rounded-lg object-contain p-2"
               unoptimized
             />
           </div>
@@ -79,7 +81,7 @@ export function ImageUploader({ onDetectionResult }: ImageUploaderProps) {
       {error && <p className="mt-4 text-center text-destructive">{error}</p>}
 
       {previewUrl && (
-        <div className="mt-6 flex justify-center gap-4">
+        <div className="mt-5 flex justify-center gap-3">
           <Button variant="outline" onClick={resetPreview}>
             <RefreshCw className="size-4" />
             Chọn ảnh khác

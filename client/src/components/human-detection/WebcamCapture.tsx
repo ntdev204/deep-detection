@@ -9,16 +9,19 @@ import type { DetectionResponse } from "@/types/detection";
 
 interface WebcamCaptureProps {
   onDetectionResult: (result: DetectionResponse) => void;
+  onStop?: () => void;
   isActive: boolean;
 }
 
 export function WebcamCapture({
   onDetectionResult,
+  onStop,
   isActive,
 }: WebcamCaptureProps) {
   const {
     videoRef,
     canvasRef,
+    overlayRef,
     isStreaming,
     isProcessing,
     error,
@@ -27,16 +30,21 @@ export function WebcamCapture({
   } = useWebcam({ onDetectionResult, isActive });
 
   return (
-    <div className="w-full">
-      <div className="relative overflow-hidden rounded-xl border border-border bg-background">
+    <div className="flex h-full w-full flex-col">
+      <div className="relative h-70 overflow-hidden rounded-xl border border-border bg-background">
         <video
           ref={videoRef}
-          className="aspect-video w-full scale-x-[-1] object-cover"
+          className="size-full scale-x-[-1] object-cover"
           playsInline
           muted
         />
 
         <canvas ref={canvasRef} className="hidden" />
+
+        <canvas
+          ref={overlayRef}
+          className="pointer-events-none absolute inset-0 size-full object-cover"
+        />
 
         {!isStreaming && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted">
@@ -57,14 +65,20 @@ export function WebcamCapture({
 
       {error && <p className="mt-4 text-center text-destructive">{error}</p>}
 
-      <div className="mt-6 flex justify-center gap-4">
+      <div className="mt-5 flex justify-center gap-3">
         {!isStreaming ? (
           <Button onClick={startWebcam}>
             <Video className="size-4" />
             Bật Camera
           </Button>
         ) : (
-          <Button variant="outline" onClick={stopWebcam}>
+          <Button
+            variant="outline"
+            onClick={() => {
+              stopWebcam();
+              onStop?.();
+            }}
+          >
             <Square className="size-4" />
             Tắt Camera
           </Button>

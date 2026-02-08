@@ -94,7 +94,7 @@ body {
 }
 
 ::selection {
-  background: var(--primary);
+  background: #3b82f6;
   color: white;
 }
 

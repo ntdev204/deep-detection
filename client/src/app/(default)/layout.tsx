@@ -9,8 +9,12 @@ export default function DefaultLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-1 flex justify-center items-center">
-        <div className="py-8 px-4 sm:px-6 lg:px-8">{children}</div>
+      <main className="flex flex-1 justify-center">
+        <div className="w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div className="flex min-h-[calc(100vh-10rem-4rem)] items-center justify-center">
+            {children}
+          </div>
+        </div>
       </main>
       <Footer />
     </div>
